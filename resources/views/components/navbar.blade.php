@@ -94,16 +94,21 @@
                 </ul>
                 <div class="ms-2 d-flex align-items-center gap-4">
                     @auth
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-user"></i>
-                                <small class="fw-semibold">{{ Auth::user()->name }}</small>
+                        <div class="user-dropdown">
+                            <button class="user-btn" onclick="toggleDropdown()">
+                                <span>{{ Auth::user()->name }}</span>
                             </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('order.show', Auth::id()) }}">Orders</a></li>
-                            </ul>
+
+                            <div class="dropdown-content" id="dropdownBox">
+                                <a href="{{ route('order.show', Auth::id()) }}">View Orders</a>
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="logout-btn">Logout</button>
+                                </form>
+                            </div>
                         </div>
+
                     @endauth
                     @guest
                         <a href="{{ route('register') }}" class="text-decoration-none text-dark">
@@ -127,12 +132,6 @@
                             <span>{{ $cartCount }}</span>
                         </div>
                     </a>
-                    @auth
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="primary-btn py-1">logout</button>
-                        </form>
-                    @endauth
                 </div>
             </div>
         </div>

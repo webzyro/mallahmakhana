@@ -138,6 +138,64 @@ body {
     color: white;
     background-color: var(--Bg-11);
 }
+/* Drowdown */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-btn {
+    background: #333;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.user-btn:hover {
+    background: #444;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background: #fff;
+    min-width: 150px;
+    padding: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.dropdown-content a,
+.dropdown-content button {
+    width: 100%;
+    display: block;
+    padding: 10px 16px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+    background: #f0f0f0;
+}
+
+.logout-btn {
+    color: #d9534f;
+}
+
+.show {
+    display: block !important;
+}
+
+/* dropdown end */
 
 #wishlist {
     position: relative;
