@@ -137,3 +137,19 @@
         </div>
     </div>
 </nav>
+
+<script>
+    function toggleDropdown() {
+        document.getElementById("dropdownBox").classList.toggle("show");
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(e) {
+        const box = document.getElementById("dropdownBox");
+        const btn = document.querySelector(".user-btn");
+
+        if (!btn.contains(e.target) && !box.contains(e.target)) {
+            box.classList.remove("show");
+        }
+    });
+</script>
