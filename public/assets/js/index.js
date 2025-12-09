@@ -22,8 +22,6 @@ $(document).ready(function () {
         dots: true,
         nav: false,
         smartSpeed: 1000,
-        animateIn: "slideInRight",
-        animateOut: "slideOutLeft",
         responsive: {
             0: {
                 items: 1,
