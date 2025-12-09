@@ -1899,12 +1899,12 @@ form select {
 }
 
 .btn-primary {
-    background: var(--Secondary);
-    border: none;
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    background: var(--Secondary) !important;
+    border: none !important;
+    padding: 0.75rem 2rem !important;
+    font-weight: 600 !important;
+    border-radius: 25px !important;
+    transition: all 0.3s ease !important;
 }
 
 .btn-primary:hover {
@@ -1914,12 +1914,12 @@ form select {
 }
 
 .btn-outline-primary {
-    border: 2px solid var(--White);
-    color: var(--White);
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    border: 2px solid var(--White) !important;
+    color: var(--White) !important;
+    padding: 0.75rem 2rem !important;
+    font-weight: 600 !important;
+    border-radius: 25px !important;
+    transition: all 0.3s ease !important;
 }
 
 .btn-outline-primary:hover {
@@ -1957,11 +1957,11 @@ form select {
 
 /* Cart Items Card */
 .cart-items-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    border: none;
-    overflow: hidden;
+    background: white !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
+    border: none !important;
+    overflow: hidden !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
