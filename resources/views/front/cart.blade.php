@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-4 text-md-end">
                         @if (count($cart) > 0)
-                            <a href="{{ route('products') }}" class="btn btn-outline-primary">
+                            <a href="{{ route('products') }}" class="primary-btn">
                                 <i class="fas fa-plus me-1"></i>
                                 Continue Shopping
                             </a>
