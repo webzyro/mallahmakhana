@@ -1898,7 +1898,7 @@ form select {
     margin-top: 2rem;
 }
 
-.primary-btn {
+.btn {
     background: var(--Secondary);
     border: none;
     padding: 0.75rem 2rem;
@@ -1907,7 +1907,7 @@ form select {
     transition: all 0.3s ease;
 }
 
-.primary-btn:hover {
+.btn:hover {
     background: var(--Secondary);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
