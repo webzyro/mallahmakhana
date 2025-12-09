@@ -14,6 +14,7 @@
     @vite(['resources/js/app.js'])
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/modern-cart.css') }}">
 
     {{-- Bootstrap Link --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
