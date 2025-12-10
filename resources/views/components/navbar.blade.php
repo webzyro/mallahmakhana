@@ -61,11 +61,30 @@
         <a class="navbar-brand" href="/">
             <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
         </a>
-        <!-- Replace navbar-toggler with offcanvas button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-flex align-items-center gap-3">
+            @auth
+                <div class="dropdown d-lg-none mobile-user-dropdown">
+                    <button class="mobile-avatar-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ substr(Auth::user()->name, 0, 1) }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ route('order.show', Auth::id()) }}">View Orders</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @endauth
+
+            <!-- Replace navbar-toggler with offcanvas button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
         <!-- Add offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -137,19 +156,19 @@
 </nav>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const userBtn = document.querySelector(".user-btn");
         const dropdownBox = document.getElementById("dropdownBox");
 
         if (userBtn && dropdownBox) {
-            userBtn.addEventListener("click", function(e) {
+            userBtn.addEventListener("click", function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 dropdownBox.classList.toggle("show");
             });
 
             // Close dropdown when clicking outside
-            document.addEventListener("click", function(e) {
+            document.addEventListener("click", function (e) {
                 if (!dropdownBox.contains(e.target) && !userBtn.contains(e.target)) {
                     dropdownBox.classList.remove("show");
                 }
