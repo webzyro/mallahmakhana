@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -10,7 +11,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 // Sitemap.xml Route
-Route::get('/sitemap.xml', function() {
+Route::get('/sitemap.xml', function () {
     $products = Product::all();
     $baseUrl = config('app.url');
 
@@ -38,10 +39,10 @@ Route::get('/sitemap.xml', function() {
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 
 // Contact Page
-Route::get('/contact-us', function() {
+Route::get('/contact-us', function () {
     return view('front.contact');
 })->name('contact');
-Route::get('/about-us', function() {
+Route::get('/about-us', function () {
     return view('front.about');
 })->name('about');
 
@@ -76,3 +77,6 @@ Route::post('/wishlist/remove/{id}', [WishlistItemController::class, 'remove'])-
 Route::get('/checkout', [OrderController::class, 'index'])->middleware('auth')->name('checkout.view');
 Route::post('/checkout', [OrderController::class, 'placeOrder'])->middleware('auth')->name('checkout.place');
 Route::get('/order/{id}', [OrderController::class, 'show'])->middleware('auth')->name('order.show');
+
+// Blog Route
+Route::apiResource('blog', BlogController::class);

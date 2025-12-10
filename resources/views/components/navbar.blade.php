@@ -63,7 +63,7 @@
         </a>
         <div class="d-flex align-items-center gap-3">
             @auth
-                <div class="dropdown d-lg-none">
+                <div class="dropdown d-lg-none mobile-user-dropdown">
                     <button class="mobile-avatar-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ substr(Auth::user()->name, 0, 1) }}
                     </button>
@@ -108,6 +108,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('contact') }}">Contact
                             Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('blog.index') }}">Blogs</a>
                     </li>
                 </ul>
                 <div class="ms-2 d-flex align-items-center gap-4">
