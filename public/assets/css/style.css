@@ -476,6 +476,8 @@ body {
 /* Footer Section */
 .footer {
     background-color: var(--Bg-5);
+    overflow: hidden;
+    padding: 10px;
 }
 
 .footer-col-1 {
