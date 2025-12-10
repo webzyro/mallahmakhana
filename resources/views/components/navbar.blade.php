@@ -63,7 +63,7 @@
         </a>
         <div class="d-flex align-items-center gap-3">
             @auth
-                <div class="dropdown d-lg-none mobile-user-dropdown">
+                <div class="dropdown d-lg-none">
                     <button class="mobile-avatar-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ substr(Auth::user()->name, 0, 1) }}
                     </button>
