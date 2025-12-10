@@ -3,8 +3,8 @@
         <div class="container">
             <!-- Cart Header -->
             <div class="cart-header mb-4">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
+                <div class="row align-items-center g-4">
+                    <div class="col-sm-8">
                         <h1 class="cart-title mb-2">
                             <i class="fas fa-shopping-cart me-2"></i>
                             Shopping Cart
@@ -14,7 +14,7 @@
                             {{ count($cart) }} {{ count($cart) == 1 ? 'Item' : 'Items' }} in your cart
                         </p>
                     </div>
-                    <div class="col-md-4 text-md-end">
+                    <div class="col-sm-4 text-sm-end">
                         @if (count($cart) > 0)
                             <a href="{{ route('products') }}" class="primary-btn">
                                 <i class="fas fa-plus me-1"></i>
@@ -61,8 +61,7 @@
                                                             <div class="quantity-controls">
                                                                 <form action="#" method="POST">
                                                                     @csrf
-                                                                    <button type="button"
-                                                                        class="quantity-btn decrement-btn">
+                                                                    <button type="button" class="quantity-btn decrement-btn">
                                                                         <i class="fas fa-minus"></i>
                                                                     </button>
                                                                 </form>
@@ -71,8 +70,7 @@
 
                                                                 <form action="#" method="POST">
                                                                     @csrf
-                                                                    <button type="button"
-                                                                        class="quantity-btn increment-btn">
+                                                                    <button type="button" class="quantity-btn increment-btn">
                                                                         <i class="fas fa-plus"></i>
                                                                     </button>
                                                                 </form>
@@ -87,8 +85,8 @@
                                                 </div>
                                             </div>
                                             <div class="item-actions">
-                                                <form action="{{ route('cart.remove', $item['product_id']) }}"
-                                                    method="POST" class="remove-form">
+                                                <form action="{{ route('cart.remove', $item['product_id']) }}" method="POST"
+                                                    class="remove-form">
                                                     @csrf
                                                     <button type="submit" class="remove-btn" title="Remove from cart">
                                                         <i class="fas fa-trash-alt"></i>
@@ -128,8 +126,7 @@
                                     {{-- <div class="summary-divider"></div> --}}
                                     <div class="summary-row total-row">
                                         <span class="summary-label"><strong>Total Amount</strong></span>
-                                        <span
-                                            class="summary-value total-value"><strong>₹{{ $total }}</strong></span>
+                                        <span class="summary-value total-value"><strong>₹{{ $total }}</strong></span>
                                     </div>
                                 </div>
 
@@ -278,16 +275,16 @@
 
                 // Send AJAX request to update cart
                 fetch(`/cart/update-quantity`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            product_id: productId,
-                            quantity: newQuantity
-                        })
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: newQuantity
                     })
+                })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
