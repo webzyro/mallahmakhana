@@ -20,7 +20,7 @@
                     <tbody>
                         @foreach ($wishlists as $wishlist)
                             <tr>
-                                <td>
+                                <td data-label="Product">
                                     <div class="product-info">
                                         <img src="{{ asset('uploads/' . $wishlist->product->image) }}" alt="product">
                                         <div>
@@ -30,23 +30,22 @@
                                     </div>
                                 </td>
 
-                                <td class="fw-semibold">{{ $wishlist->variant->original_price }}</td>
+                                <td class="fw-semibold" data-label="Price">{{ $wishlist->variant->original_price }}</td>
 
-                                <td>
+                                <td data-label="Stock Status">
                                     <span
                                         class="stock-badge in-stock">{{ $wishlist->variant->stock ? 'In Stock' : 'Our of Stock' }}</span>
                                 </td>
 
-                                <td>
+                                <td data-label="Action">
                                     <form action="{{ route('cart.add', $wishlist->product->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="add-cart-btn">Add to cart</button>
                                     </form>
                                 </td>
 
-                                <td>
-                                    <form action="{{ route('wishlist.remove', $wishlist->product->id) }}"
-                                        method="POST">
+                                <td data-label="Remove">
+                                    <form action="{{ route('wishlist.remove', $wishlist->product->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="remove-btn">
                                             <i class="fa-solid fa-trash text-danger text-white"></i>

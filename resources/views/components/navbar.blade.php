@@ -71,8 +71,7 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <a class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel" href="/">
-                    <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo"
-                        class="img-fluid w-75" />
+                    <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
                 </a>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -108,7 +107,6 @@
                                 </form>
                             </div>
                         </div>
-
                     @endauth
                     @guest
                         <a href="{{ route('register') }}" class="text-decoration-none text-dark">
@@ -144,7 +142,7 @@
     }
 
     // Close dropdown when clicking outside
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
         const box = document.getElementById("dropdownBox");
         const btn = document.querySelector(".user-btn");
 
