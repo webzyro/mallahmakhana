@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $cart = CartItem::with('product')->where('user_id', Auth::id())->get();
 
-        if(empty($cart)){
+        if (empty($cart)) {
             return back()->with('error', 'Your cart is empty!');
         }
 
@@ -51,7 +51,7 @@ class OrderController extends Controller
 
         $cart = CartItem::where('user_id', Auth::id())->get();
 
-        if(empty($cart)){
+        if (empty($cart)) {
             return back()->with('error', 'Your cart is empty!');
         }
 
@@ -79,22 +79,22 @@ class OrderController extends Controller
         // Create order_items
         foreach ($cart as $item) {
             OrderItem::create([
-                'order_id'   => $order->id,
+                'order_id' => $order->id,
                 'product_id' => $item->product_id,
                 'variant_id' => $item->variant_id,
-                'flavor'     => $item->flavor,
-                'weight'     => $item->weight,
-                'price'      => $item->price,
-                'quantity'   => $item->quantity,
-                'subtotal'   => $item->subtotal,
-                'image'      => $item->image,
+                'flavor' => $item->flavor,
+                'weight' => $item->weight,
+                'price' => $item->price,
+                'quantity' => $item->quantity,
+                'subtotal' => $item->subtotal,
+                'image' => $item->image,
             ]);
         }
 
         // Clear cart after order created
         CartItem::where('user_id', Auth::id())->delete();
 
-        if($request->payment_method === 'prepaid') {
+        if ($request->payment_method === 'prepaid') {
             // return redirect()->route('razorpay.pay', $order->id);
         }
 
@@ -107,10 +107,10 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $order = Order::with('items.product')->where('user_id', $id)->first();
+        $order = Order::with('items.product')->where('id', $id)->where('user_id', Auth::id())->first();
 
         if (!$order) {
-             return redirect()
+            return redirect()
                 ->back()
                 ->with('error', 'Order not found or you do not have permission to view it.');
         }
