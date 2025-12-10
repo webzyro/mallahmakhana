@@ -1,7 +1,7 @@
 <footer class="pt-2 footer">
     <div class="container-fs">
         <div class="row g-4">
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="footer-col-1">
                     <a class="footer-logo" href="/">
                         <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo"
@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="footer-col-2">
                     <h5>Company</h5>
 
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="footer-col-3">
                     <h5>Account</h5>
 
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="footer-col-4">
                     <h5>Popular</h5>
 
