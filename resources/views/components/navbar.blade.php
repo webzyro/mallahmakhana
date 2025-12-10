@@ -94,7 +94,7 @@
                 <div class="ms-2 d-flex align-items-center gap-4">
                     @auth
                         <div class="user-dropdown">
-                            <button class="user-btn" onclick="toggleDropdown()">
+                            <button class="user-btn">
                                 <span>{{ Auth::user()->name }}</span>
                             </button>
 
@@ -137,17 +137,23 @@
 </nav>
 
 <script>
-    function toggleDropdown() {
-        document.getElementById("dropdownBox").classList.toggle("show");
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        const userBtn = document.querySelector(".user-btn");
+        const dropdownBox = document.getElementById("dropdownBox");
 
-    // Close dropdown when clicking outside
-    document.addEventListener("click", function (e) {
-        const box = document.getElementById("dropdownBox");
-        const btn = document.querySelector(".user-btn");
+        if (userBtn && dropdownBox) {
+            userBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownBox.classList.toggle("show");
+            });
 
-        if (!btn.contains(e.target) && !box.contains(e.target)) {
-            box.classList.remove("show");
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function(e) {
+                if (!dropdownBox.contains(e.target) && !userBtn.contains(e.target)) {
+                    dropdownBox.classList.remove("show");
+                }
+            });
         }
     });
 </script>
