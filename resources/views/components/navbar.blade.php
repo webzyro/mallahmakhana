@@ -58,7 +58,7 @@
 {{-- Navbar --}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-4 py-2" id="navbar-container">
     <div class="container-fluid d-flex align-items-center justify-content-between">
-        <a class="navbar-brand w-75 overflow-hidden" href="/">
+        <a class="navbar-brand" href="/" style="width: fit-content; overflow: hidden;">
             <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
         </a>
         <div class="d-flex align-items-center gap-3">
