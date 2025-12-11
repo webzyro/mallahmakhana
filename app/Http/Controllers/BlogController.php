@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,6 +12,8 @@ class BlogController extends Controller
      */
     public function index()
     {
+        $blogs = Blog::where('is_active', true)->orderBy('created_at', 'desc')->paginate(10);
+        dd($blogs);
         return view('front.blog');
     }
 
