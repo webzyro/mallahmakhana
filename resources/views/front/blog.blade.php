@@ -45,24 +45,59 @@
                 <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#"
-                                    style="background-color: var(--Primary); border-color: var(--Primary);">1</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#" style="color: var(--Primary);">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#" style="color: var(--Primary);">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" style="color: var(--Primary);">Next</a>
-                            </li>
+
+                            {{-- Previous Button --}}
+                            @if ($blogs->onFirstPage())
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $blogs->previousPageUrl() }}"
+                                        style="color: var(--Primary);">
+                                        Previous
+                                    </a>
+                                </li>
+                            @endif
+
+
+                            {{-- Page Numbers --}}
+                            @foreach ($blogs->links()->elements[0] ?? [] as $page => $url)
+                                @if ($page == $blogs->currentPage())
+                                    <li class="page-item active" aria-current="page">
+                                        <span class="page-link"
+                                            style="background-color: var(--Primary); border-color: var(--Primary);">
+                                            {{ $page }}
+                                        </span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $url }}" style="color: var(--Primary);">
+                                            {{ $page }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+
+
+                            {{-- Next Button --}}
+                            @if ($blogs->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $blogs->nextPageUrl() }}" style="color: var(--Primary);">
+                                        Next
+                                    </a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">Next</span>
+                                </li>
+                            @endif
+
                         </ul>
                     </nav>
                 </div>
             </div>
+
         </div>
     </section>
 </x-layout>
