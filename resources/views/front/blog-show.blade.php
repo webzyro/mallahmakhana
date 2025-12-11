@@ -19,7 +19,7 @@
                                 @if($blog->category)
                                     <span class="me-3">&bull;</span>
                                     <a href="#" class="text-decoration-none text-primary fw-bold">
-                                        {{ $blog->category->name }}
+                                        {{ $blog->category }}
                                     </a>
                                 @endif
                             </div>
