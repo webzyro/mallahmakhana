@@ -35,18 +35,6 @@
                         <div class="post-content p-4 p-md-5 text-dark lh-lg">
                             {!! $blog->description !!}
                         </div>
-
-                        <!-- 
-                        @if($blog->tags->count())
-                        <footer class="post-footer p-4 p-md-5 border-top d-flex flex-wrap gap-2">
-                            @foreach($blog->tags as $tag)
-                                <a href="{{ route('blog.tag', $tag->slug) }}" class="badge bg-light text-dark text-decoration-none border px-3 py-2 rounded-pill">
-                                    #{{ $tag->name }}
-                                </a>
-                            @endforeach
-                        </footer>
-                        @endif 
-                        -->
                     </article>
                 </div>
             </div>
