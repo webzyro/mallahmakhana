@@ -12,7 +12,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::where('is_active', true)->orderBy('created_at', 'desc')->paginate(10);
+        $blogs = Blog::where('is_active', true)->orderBy('created_at', 'desc')->paginate(6);
         // dd($blogs);
         return view('front.blog', ['blogs' => $blogs]);
     }
