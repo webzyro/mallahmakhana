@@ -18,8 +18,7 @@
                                 </time>
                                 @if($blog->category)
                                     <span class="me-3">&bull;</span>
-                                    <a href="{{ route('blog.category', $blog->category) }}"
-                                        class="text-decoration-none text-primary fw-bold">
+                                    <a href="#" class="text-decoration-none text-primary fw-bold">
                                         {{ $blog->category->name }}
                                     </a>
                                 @endif
