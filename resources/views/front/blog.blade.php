@@ -29,8 +29,7 @@
                                 </div>
                                 <h2 class="blog-title">{{$blog->title}}</h2>
                                 <p class="blog-excerpt">
-                                    Discover why Makhana is called a superfood. From heart health to weight loss, learn how
-                                    this humble snack can transform your daily diet.
+                                    {{ Str::limit(strip_tags($blog->description), 150) }}
                                 </p>
                                 <a href="#" class="read-more-btn text-decoration-none">
                                     Read Article <i class="fas fa-arrow-right"></i>
