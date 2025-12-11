@@ -2827,3 +2827,82 @@ form select {
     gap: 15px;
     color: var(--Text-4);
 }
+
+/* Blog Details Page */
+.blog-detail-page {
+    background-color: var(--Bg-16);
+}
+
+.blog-post {
+    border-radius: 12px;
+    background-color: var(--White);
+}
+
+.post-header {
+    border-bottom: 1px solid var(--Border-6);
+}
+
+.post-title {
+    font-family: "Quicksand", sans-serif;
+    color: var(--Text-5);
+    line-height: 1.2;
+}
+
+.post-meta {
+    color: var(--body-text);
+}
+
+.post-meta a {
+    color: var(--Primary);
+    transition: color 0.3s ease;
+}
+
+.post-meta a:hover {
+    color: var(--Secondary);
+}
+
+.post-image img {
+    border-bottom: 1px solid var(--Border-6);
+    background-color: var(--Bg-8);
+}
+
+.post-content {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.1rem;
+    color: var(--Text-5);
+    line-height: 1.8;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-family: "Quicksand", sans-serif;
+    color: var(--Primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+.post-content blockquote {
+    border-left: 4px solid var(--Secondary);
+    background-color: var(--Bg-8);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--Text-5);
+    border-radius: 0 8px 8px 0;
+}

@@ -31,7 +31,7 @@
                                 <p class="blog-excerpt">
                                     {{ Str::limit(strip_tags($blog->description), 150) }}
                                 </p>
-                                <a href="#" class="read-more-btn text-decoration-none">
+                                <a href="{{ route('blog.show', $blog->slug) }}" class="read-more-btn text-decoration-none">
                                     Read Article <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
