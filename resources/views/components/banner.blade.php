@@ -3,12 +3,6 @@
         <div class="carousel-item active">
             <img src="{{ asset('assets/images/makhana-banner.webp') }}" class="d-block w-100" alt="banner-one">
         </div>
-        <div class="carousel-item">
-            <img src="{{ asset('assets/images/banner-2.webp') }}" class="d-block w-100" alt="banner-two">
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('assets/images/banner3.webp') }}" class="d-block w-100" alt="banner-three">
-        </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
         data-bs-slide="prev">
