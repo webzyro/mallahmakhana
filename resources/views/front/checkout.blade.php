@@ -1,4 +1,5 @@
-<x-layout>
+<x-layout title="Checkout" meta_description="Complete your order in just a few steps"
+    meta_keywords="checkout, order, payment">
     <section class="modern-checkout-page py-5">
         <div class="container-fs">
             <!-- Header -->
@@ -43,13 +44,13 @@
 
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <x-input-field label="Full Name" icon="fa-regular fa-user" id="name"
-                                        type="text" placeholder="Enter your full name" />
+                                    <x-input-field label="Full Name" icon="fa-regular fa-user" id="name" type="text"
+                                        placeholder="Enter your full name" />
                                 </div>
 
                                 <div class="form-group">
-                                    <x-input-field label="Phone Number" icon="fa-solid fa-phone" id="phone"
-                                        type="tel" placeholder="Enter your phone number" />
+                                    <x-input-field label="Phone Number" icon="fa-solid fa-phone" id="phone" type="tel"
+                                        placeholder="Enter your phone number" />
                                 </div>
 
                                 <div class="form-group full-width">
@@ -58,8 +59,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <x-input-field label="City" icon="fa-solid fa-house-chimney" id="city"
-                                        type="text" placeholder="Enter your city" />
+                                    <x-input-field label="City" icon="fa-solid fa-house-chimney" id="city" type="text"
+                                        placeholder="Enter your city" />
                                 </div>
 
                                 <div class="form-group">
@@ -68,8 +69,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <x-input-field label="Pincode" icon="fa-solid fa-map-pin" id="pincode"
-                                        type="text" placeholder="Enter pincode" />
+                                    <x-input-field label="Pincode" icon="fa-solid fa-map-pin" id="pincode" type="text"
+                                        placeholder="Enter pincode" />
                                 </div>
                             </div>
                         </div>
@@ -802,7 +803,7 @@
 
     <script>
         // Form validation and enhancement
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('checkout-form');
             const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
             const submitBtn = document.querySelector('.btn-place-order');
@@ -810,7 +811,7 @@
 
             // Update button text based on payment method
             paymentMethods.forEach(method => {
-                method.addEventListener('change', function() {
+                method.addEventListener('change', function () {
                     if (this.value === 'cod') {
                         btnText.textContent = 'Place Order (COD)';
                     } else {
@@ -820,7 +821,7 @@
             });
 
             // Form submission handling
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 const selectedPayment = document.querySelector('input[name="payment_method"]:checked');
 
                 if (selectedPayment.value === 'online') {
@@ -835,7 +836,7 @@
             });
 
             // Add loading state to submit button
-            form.addEventListener('submit', function() {
+            form.addEventListener('submit', function () {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
             });

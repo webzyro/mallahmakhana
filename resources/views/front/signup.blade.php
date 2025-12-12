@@ -1,4 +1,4 @@
-<x-auth-layout>
+<x-auth-layout title="Sign Up" meta_description="Sign Up" meta_keywords="Sign Up">
     <section class="register-page">
         <button class="back-btn primary-btn">
             <i class="fa-solid fa-arrow-left"></i>

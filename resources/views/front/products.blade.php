@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Products" meta_description="Products" meta_keywords="Products">
     <div class="container py-3">
         <div class="row g-4">
             <div class="d-block col-md-3">
@@ -33,7 +33,6 @@
                                         value="{{ $category->id }}"
                                         onchange="document.getElementById('filterForm').submit()"
                                         {{ request('category') == $category->id ? 'checked' : '' }}>
-
                                     <label for="cat_{{ $category->id }}"
                                         class="fw-semibold text-dark fw-semibold">{{ $category->name }}</label>
                                 </div>

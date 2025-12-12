@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Product Details" meta_description="Product Details" meta_keywords="Product Details">
     <section class="py-5" id="product-details">
         <div class="container-fluid">
             <div class="row g-4">
@@ -57,8 +57,7 @@
                             </form>
                             <form action="{{ route('wishlist.add', $product->id) }}" method="POST">
                                 @csrf
-                                <button type="submit"
-                                    class="d-flex align-items-center justify-content-center cart-btn">
+                                <button type="submit" class="d-flex align-items-center justify-content-center cart-btn">
                                     <i class="fa-regular fa-heart"></i>
                                 </button>
                             </form>

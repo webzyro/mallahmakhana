@@ -1,4 +1,4 @@
-<x-layout title="Home - Makhana Mafiya" meta_description="Buy makhana online - Makhana Mafiya"
+<x-layout title="Home - Mallah Makhana" meta_description="Buy makhana online - Mallah Makhana"
     meta_keywords="makhana, healthy snacks">
     {{-- Banner --}}
     <x-banner />

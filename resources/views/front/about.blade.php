@@ -1,4 +1,6 @@
-<x-layout>
+<x-layout title="About Us"
+    meta_description="Discover Makhana Mafiya - your trusted partner for premium quality makhana and healthy snacks since 2018. Learn about our mission, values, and commitment to healthy living."
+    meta_keywords="Makhana Mafiya, About Us, healthy snacks, premium makhana, company history, mission, values">
     <!-- Hero Section -->
     <section class="about-hero py-5">
         <div class="container">

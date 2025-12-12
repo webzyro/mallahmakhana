@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Order Details" meta_description="Order Details" meta_keywords="Order Details">
     <section class="order-details-page py-5">
         <div class="container">
             <!-- Order Header -->

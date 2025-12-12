@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Contact Us" meta_description="Contact Us" meta_keywords="Contact Us">
     {{-- <x-breadcrumb title="Contact us" /> --}}
 
     <section class="contact-page py-3">

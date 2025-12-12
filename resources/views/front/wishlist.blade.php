@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Wishlist" meta_description="Wishlist" meta_keywords="Wishlist">
     <section class="wishlist-container">
         <div class="wishlist-wrapper">
             <div class="wishlist-top">

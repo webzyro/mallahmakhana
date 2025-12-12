@@ -1,4 +1,4 @@
-<x-auth-layout>
+<x-auth-layout title="Login" meta_description="Login" meta_keywords="Login">
     <section class="register-page">
         <button class="back-btn primary-btn">
             <i class="fa-solid fa-arrow-left"></i>

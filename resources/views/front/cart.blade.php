@@ -1,4 +1,5 @@
-<x-layout>
+<x-layout title="Shopping Cart" meta_description="Review your shopping cart and proceed to checkout."
+    meta_keywords="shopping cart, checkout, cart, products">
     <section class="modern-cart-page py-5">
         <div class="container">
             <!-- Cart Header -->
