@@ -1,3 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+    <loc>https://mallahmakhana.com/blog/roasted-makhana</loc>
+    <lastmod>2025-12-02T05:41:14+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    </url>
+    <url>
+    <loc>https://mallahmakhana.com/blog/tomato-makhana</loc>
+    <lastmod>2025-12-02T05:41:33+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    </url>
+    <url>
+    <loc>https://mallahmakhana.com/blog/happilo-nuts</loc>
+    <lastmod>2025-11-26T12:21:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    </url>
+    <url>
+    <loc>https://mallahmakhana.com/blog/nipun-makhana</loc>
+    <lastmod>2025-12-02T11:06:57+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    </url>
 </urlset>

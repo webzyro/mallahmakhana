@@ -32,57 +32,73 @@ class GenerateSitemap extends Command
     {
         $basePath = public_path('/');
 
-        // ------------ STATIC PAGES ------------
+        /*
+        |--------------------------------------------------------------------------
+        | STATIC PAGES SITEMAP
+        |--------------------------------------------------------------------------
+        */
         $static = Sitemap::create()
-            ->add(Url::create('/'))
-            ->add(Url::create('/about-us'))
-            ->add(Url::create('/contact-us'))
-            ->add(Url::create('/login'))
-            ->add(Url::create('/register'))
-            ->add(Url::create('/wishlist'))
-            ->add(Url::create('/cart'))
-            ->add(Url::create('/checkout'))
-            ->add(Url::create('/privacy-policy'))
-            ->add(Url::create('/terms-and-conditions'));
+            ->add(Url::create(url('/')))
+            ->add(Url::create(url('/about-us')))
+            ->add(Url::create(url('/contact-us')))
+            ->add(Url::create(url('/login')))
+            ->add(Url::create(url('/register')))
+            ->add(Url::create(url('/wishlist')))
+            ->add(Url::create(url('/cart')))
+            ->add(Url::create(url('/checkout')))
+            ->add(Url::create(url('/privacy-policy')))
+            ->add(Url::create(url('/terms-and-conditions')));
 
         $static->writeToFile($basePath . 'sitemap-static.xml');
 
 
-        // ------------ BLOG SITEMAP ------------
+        /*
+        |--------------------------------------------------------------------------
+        | BLOG SITEMAP (SAFE & CORRECT)
+        |--------------------------------------------------------------------------
+        */
         $blogSitemap = Sitemap::create();
 
-        Blog::where('is_active', true)->chunk(100, function ($blogs) use ($blogSitemap) {
-            foreach ($blogs as $blog) {
-                $blogSitemap->add(
-                    Url::create(url("/blog/{$blog->slug}"))
-                        ->setLastModificationDate($blog->updated_at)
-                );
-            }
+        Blog::where('is_active', true)->each(function ($blog) use ($blogSitemap) {
+            $blogSitemap->add(
+                Url::create(url("/blog/{$blog->slug}"))
+                    ->setLastModificationDate($blog->updated_at)
+                    ->setChangeFrequency('weekly')
+                    ->setPriority(0.8)
+            );
         });
 
         $blogSitemap->writeToFile($basePath . 'sitemap-blogs.xml');
 
 
-        // ------------ PRODUCT SITEMAP ------------
+        /*
+        |--------------------------------------------------------------------------
+        | PRODUCT SITEMAP (SAFE & CORRECT)
+        |--------------------------------------------------------------------------
+        */
         $productSitemap = Sitemap::create();
 
-        Product::where('is_active', true)->chunk(100, function ($products) use ($productSitemap) {
-            foreach ($products as $product) {
-                $productSitemap->add(
-                    Url::create(url("/product/{$product->slug}"))
-                        ->setLastModificationDate($product->updated_at)
-                );
-            }
+        Product::where('is_active', true)->each(function ($product) use ($productSitemap) {
+            $productSitemap->add(
+                Url::create(url("/product/{$product->slug}"))
+                    ->setLastModificationDate($product->updated_at)
+                    ->setChangeFrequency('daily')
+                    ->setPriority(0.9)
+            );
         });
 
         $productSitemap->writeToFile($basePath . 'sitemap-products.xml');
 
 
-        // ------------ SITEMAP INDEX ------------
+        /*
+        |--------------------------------------------------------------------------
+        | FINAL SITEMAP INDEX
+        |--------------------------------------------------------------------------
+        */
         SitemapIndex::create()
-            ->add('/sitemap-static.xml')
-            ->add('/sitemap-blogs.xml')
-            ->add('/sitemap-products.xml')
+            ->add(url('/sitemap-static.xml'))
+            ->add(url('/sitemap-blogs.xml'))
+            ->add(url('/sitemap-products.xml'))
             ->writeToFile($basePath . 'sitemap.xml');
 
         $this->info('All sitemaps generated successfully!');

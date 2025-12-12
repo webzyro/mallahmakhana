@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>http://127.0.0.1:8000/sitemap-static.xml</loc>
-            <lastmod>2025-12-12T06:09:34+00:00</lastmod>
+        <loc>https://mallahmakhana.com/sitemap-static.xml</loc>
+            <lastmod>2025-12-12T06:30:55+00:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://127.0.0.1:8000/sitemap-blogs.xml</loc>
-            <lastmod>2025-12-12T06:09:34+00:00</lastmod>
+        <loc>https://mallahmakhana.com/sitemap-blogs.xml</loc>
+            <lastmod>2025-12-12T06:30:55+00:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://127.0.0.1:8000/sitemap-products.xml</loc>
-            <lastmod>2025-12-12T06:09:34+00:00</lastmod>
+        <loc>https://mallahmakhana.com/sitemap-products.xml</loc>
+            <lastmod>2025-12-12T06:30:55+00:00</lastmod>
     </sitemap>
 </sitemapindex>
