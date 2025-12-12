@@ -10,31 +10,6 @@ use App\Http\Controllers\WishlistItemController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-// Sitemap.xml Route
-Route::get('/sitemap.xml', function () {
-    $products = Product::all();
-    $baseUrl = config('app.url');
-
-    $staticPages = [
-        '/',
-        '/about-us',
-        '/contact-us',
-        '/login',
-        '/register',
-        '/wishlist',
-        '/cart',
-        '/checkout',
-        '/terms',
-        '/privacy-policy',
-    ];
-
-    return response()->view('sitemap', [
-        'products' => $products,
-        'staticPages' => $staticPages,
-        'baseUrl' => $baseUrl,
-    ])->header('Content-Type', 'application/xml');
-});
-
 
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 
