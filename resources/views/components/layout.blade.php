@@ -99,7 +99,7 @@
 
 
     {{-- index.js file --}}
-    <script src="{{ asset('assets/js/index.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}?v=2"></script>
 </body>
 
 </html>

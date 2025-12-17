@@ -1,8 +1,9 @@
-function toggleDropdown() {
+// Ensure functions are global
+window.toggleDropdown = function() {
     document.getElementById("dropdownBox").classList.toggle("show");
 }
 
-function toggleMobileDropdown() {
+window.toggleMobileDropdown = function() {
     document.getElementById("mobileDropdownBox").classList.toggle("show");
 }
 
@@ -18,7 +19,7 @@ document.addEventListener("click", function (e) {
     // Mobile Dropdown
     const mobileBox = document.getElementById("mobileDropdownBox");
     const mobileBtn = document.querySelector(".mobile-avatar-btn");
-
+    
     // Only run if elements exist (mobile view)
     if (
         mobileBox &&
@@ -54,12 +55,20 @@ $(document).ready(function () {
     });
 });
 
-document
-    .getElementById("variant-select")
-    .addEventListener("change", function () {
-        const option = this.options[this.selectedIndex];
-        document.getElementsByClassName("original-price").innerText =
-            option.dataset.price;
-        document.getElementById("stock").innerText =
-            "Stock: " + option.dataset.stock;
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    const variantSelect = document.getElementById("variant-select");
+    if (variantSelect) {
+        variantSelect.addEventListener("change", function () {
+            const option = this.options[this.selectedIndex];
+            const originalPriceElements = document.getElementsByClassName("original-price");
+            if (originalPriceElements.length > 0) {
+            originalPriceElements[0].innerText = option.dataset.price;
+            }
+            
+            const stockElement = document.getElementById("stock");
+            if(stockElement) {
+                stockElement.innerText = "Stock: " + option.dataset.stock;
+            }
+        });
+    }
+});
