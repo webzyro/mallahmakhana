@@ -56,45 +56,55 @@
 </header>
 
 {{-- Navbar --}}
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2" id="navbar-container">
+{{-- Navbar --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2 d-none d-lg-block"
+    id="navbar-container">
     <div class="container-fluid d-flex align-items-center justify-content-between" style="flex-wrap: nowrap;">
         <a class="navbar-brand" href="/" style="width: fit-content; overflow: hidden;">
             <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
         </a>
         <div class="d-flex align-items-center gap-3">
-            <!-- Mobile Cart Icon -->
-            <a href="{{ route('cart.index') }}" class="mobile-cart-btn d-lg-none me-2">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="mobile-cart-badge">{{ $cartCount }}</span>
-            </a>
-
             @auth
-                <!-- Mobile User Dropdown -->
-                <div class="dropdown d-lg-none mobile-user-dropdown">
-                    <button class="mobile-avatar-btn p-0 border-0 bg-transparent" type="button"
-                        onclick="toggleMobileDropdown()">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-dark text-white fw-bold"
-                            style="width: 40px; height: 40px; font-size: 18px;">
-                            {{ substr(Auth::user()->name, 0, 1) }}
-                        </div>
+                <div class="user-dropdown">
+                    <button class="user-btn">
+                        <span>{{ Auth::user()->name }}</span>
                     </button>
-                    <div class="mobile-dropdown-content" id="mobileDropdownBox">
-                        <a href="{{ route('order.show', Auth::id()) }}">
-                            <i class="fa-solid fa-box-open"></i> View Orders
-                        </a>
-                        <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+
+                    <div class="dropdown-content" id="dropdownBox">
+                        <a href="{{ route('order.show', Auth::id()) }}">View Orders</a>
+
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="logout-btn w-100 text-danger">
-                                <i class="fa-solid fa-right-from-bracket"></i> Logout
-                            </button>
+                            <button type="submit" class="logout-btn">Logout</button>
                         </form>
                     </div>
                 </div>
             @endauth
-
-            <!-- Replace navbar-toggler with offcanvas button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar">
+            @guest
+                <a href="{{ route('register') }}" class="text-decoration-none text-dark">
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <i class="fa-regular fa-user"></i>
+                        <small class="fw-bold">Sign Up</small>
+                    </div>
+                </a>
+            @endguest
+            <a href="{{ route('wishlist') }}" class="text-decoration-none text-dark">
+                <div class="d-flex flex-column align-items-center justify-content-center" id="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <small class="fw-bold">Wishlist</small>
+                    <span>{{ $wishlistCount }}</span>
+                </div>
+            </a>
+            <a href="{{ route('cart.index') }}" class="text-decoration-none text-dark">
+                <div class="d-flex flex-column align-items-center justify-content-center" id="cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <small class="fw-bold">Bag</small>
+                    <span>{{ $cartCount }}</span>
+                </div>
+            </a>
+            <!-- Offcanvas Toggle for Desktop (if needed, usually desktop has links visible) -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -126,47 +136,49 @@
                         <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('blog.index') }}">Blogs</a>
                     </li>
                 </ul>
-                <div class="ms-2 d-flex align-items-center gap-4">
-                    @auth
-                        <div class="user-dropdown">
-                            <button class="user-btn">
-                                <span>{{ Auth::user()->name }}</span>
-                            </button>
-
-                            <div class="dropdown-content" id="dropdownBox">
-                                <a href="{{ route('order.show', Auth::id()) }}">View Orders</a>
-
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="logout-btn">Logout</button>
-                                </form>
-                            </div>
-                        </div>
-                    @endauth
-                    @guest
-                        <a href="{{ route('register') }}" class="text-decoration-none text-dark">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <i class="fa-regular fa-user"></i>
-                                <small class="fw-bold">Sign Up</small>
-                            </div>
-                        </a>
-                    @endguest
-                    <a href="{{ route('wishlist') }}" class="text-decoration-none text-dark">
-                        <div class="d-flex flex-column align-items-center justify-content-center" id="wishlist">
-                            <i class="fa-regular fa-heart"></i>
-                            <small class="fw-bold">Wishlist</small>
-                            <span>{{ $wishlistCount }}</span>
-                        </div>
-                    </a>
-                    <a href="{{ route('cart.index') }}" class="text-decoration-none text-dark">
-                        <div class="d-flex flex-column align-items-center justify-content-center" id="cart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            <small class="fw-bold">Bag</small>
-                            <span>{{ $cartCount }}</span>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
+</nav>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav d-lg-none">
+    <a href="/" class="mobile-nav-item {{ Request::is('/') ? 'active' : '' }}">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="{{ route('products') }}" class="mobile-nav-item {{ Request::is('products*') ? 'active' : '' }}">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Category</span>
+    </a>
+
+    <a href="{{ route('cart.index') }}" class="mobile-nav-item {{ Request::is('cart*') ? 'active' : '' }}">
+        <i class="fa-solid fa-cart-shopping"></i>
+        @if($cartCount > 0)
+            <span class="mobile-nav-badge">{{ $cartCount }}</span>
+        @endif
+        <span>Cart</span>
+    </a>
+
+    <a href="{{ route('wishlist') }}" class="mobile-nav-item {{ Request::is('wishlist*') ? 'active' : '' }}">
+        <i class="fa-regular fa-heart"></i>
+        @if($wishlistCount > 0)
+            <span class="mobile-nav-badge">{{ $wishlistCount }}</span>
+        @endif
+        <span>Wishlist</span>
+    </a>
+
+    @auth
+        <a href="{{ route('order.show', Auth::id()) }}" class="mobile-nav-item {{ Request::is('order*') ? 'active' : '' }}">
+            <i class="fa-regular fa-user"></i>
+            <span>Profile</span>
+        </a>
+    @endauth
+    @guest
+        <a href="{{ route('login') }}" class="mobile-nav-item {{ Request::is('login') ? 'active' : '' }}">
+            <i class="fa-regular fa-user"></i>
+            <span>Login</span>
+        </a>
+    @endguest
 </nav>
