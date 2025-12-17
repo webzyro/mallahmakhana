@@ -43,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
                 OrdersChart::class,
                 // FilamentInfoWidget::class,
             ])
-            ->authGuard('web')
+            ->authGuard('admin')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
