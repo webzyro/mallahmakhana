@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable implements FilamentUser
@@ -35,8 +36,12 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Allow access ONLY to admins
-        return $this->is_admin === true;
+       if (!$this->is_admin) {
+        Auth::logout(); // 🔥 VERY IMPORTANT
+        return false;
+    }
+
+        return true;
     }
 
     public function cartItems(): HasMany
