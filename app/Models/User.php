@@ -36,7 +36,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-       if (!$this->is_admin) {
+       if (! $this->is_admin) {
         Auth::logout(); // 🔥 VERY IMPORTANT
         return false;
     }
