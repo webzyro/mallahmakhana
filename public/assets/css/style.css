@@ -2906,3 +2906,97 @@ form select {
     color: var(--Text-5);
     border-radius: 0 8px 8px 0;
 }
+/* Mobile Dropdown */
+.mobile-user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.mobile-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 120%; /* Slightly lower to avoid overlap */
+    background: #fff;
+    min-width: 160px;
+    padding: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1050; /* Higher than bootstrap default offcanvas z-index just in case, but mainly for overlay */
+    border: 1px solid var(--Border-4);
+}
+
+.mobile-dropdown-content.show {
+    display: block !important;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.mobile-dropdown-content a,
+.mobile-dropdown-content button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--Text-2);
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    transition: background 0.2s;
+}
+
+.mobile-dropdown-content a:hover,
+.mobile-dropdown-content button:hover {
+    background-color: var(--Bg-8);
+    color: var(--Primary);
+}
+
+/* Mobile Cart Icon Styling */
+.mobile-cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--Bg-8);
+    border-radius: 50%;
+    color: var(--Primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.mobile-cart-btn:hover {
+    background-color: var(--Primary);
+    color: var(--White);
+}
+
+.mobile-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--Color-1); /* Red color from variables */
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

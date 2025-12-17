@@ -62,20 +62,33 @@
             <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
         </a>
         <div class="d-flex align-items-center gap-3">
+            <!-- Mobile Cart Icon -->
+            <a href="{{ route('cart.index') }}" class="mobile-cart-btn d-lg-none me-2">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="mobile-cart-badge">{{ $cartCount }}</span>
+            </a>
+
             @auth
+                <!-- Mobile User Dropdown -->
                 <div class="dropdown d-lg-none mobile-user-dropdown">
-                    <button class="mobile-avatar-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ substr(Auth::user()->name, 0, 1) }}
+                    <button class="mobile-avatar-btn p-0 border-0 bg-transparent" type="button"
+                        onclick="toggleMobileDropdown()">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-dark text-white fw-bold"
+                            style="width: 40px; height: 40px; font-size: 18px;">
+                            {{ substr(Auth::user()->name, 0, 1) }}
+                        </div>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{{ route('order.show', Auth::id()) }}">View Orders</a></li>
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item text-danger">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+                    <div class="mobile-dropdown-content" id="mobileDropdownBox">
+                        <a href="{{ route('order.show', Auth::id()) }}">
+                            <i class="fa-solid fa-box-open"></i> View Orders
+                        </a>
+                        <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+                            @csrf
+                            <button type="submit" class="logout-btn w-100 text-danger">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </button>
+                        </form>
+                    </div>
                 </div>
             @endauth
 
