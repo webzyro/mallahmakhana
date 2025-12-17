@@ -3068,3 +3068,74 @@ form select {
         padding-bottom: 70px;
     }
 }
+/* Bottom Profile Dropdown (Dropup) */
+.bottom-profile-wrapper {
+    position: relative;
+    width: 20%;
+}
+
+.bottom-profile-dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    background: #fff;
+    min-width: 160px;
+    margin-bottom: 15px; /* Spacing from bottom bar */
+    border-radius: 12px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 1050;
+    border: 1px solid var(--Border-4);
+    overflow: hidden;
+}
+
+.bottom-profile-dropdown.show {
+    display: block !important;
+    animation: fadeInUp 0.2s ease-out;
+}
+
+.bottom-profile-dropdown a,
+.bottom-profile-dropdown button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: var(--Text-5);
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--Bg-8);
+    transition: background 0.2s;
+}
+
+.bottom-profile-dropdown a:last-child,
+.bottom-profile-dropdown button:last-child {
+    border-bottom: none;
+}
+
+.bottom-profile-dropdown a:hover,
+.bottom-profile-dropdown button:hover {
+    background-color: var(--Bg-8);
+    color: var(--Primary);
+}
+
+.mobile-nav-item button { /* Reset button styles for profile toggle */
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translate(50%, 10px); }
+    to { opacity: 1; transform: translate(50%, 0); }
+}

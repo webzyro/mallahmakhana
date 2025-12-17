@@ -1,10 +1,13 @@
-// Ensure functions are global
 window.toggleDropdown = function() {
     document.getElementById("dropdownBox").classList.toggle("show");
 }
 
 window.toggleMobileDropdown = function() {
     document.getElementById("mobileDropdownBox").classList.toggle("show");
+}
+
+window.toggleBottomProfile = function() {
+    document.getElementById("bottomProfileBox").classList.toggle("show");
 }
 
 // Close dropdown when clicking outside
@@ -16,18 +19,18 @@ document.addEventListener("click", function (e) {
         box.classList.remove("show");
     }
 
-    // Mobile Dropdown
+    // Mobile Dropdown (Top)
     const mobileBox = document.getElementById("mobileDropdownBox");
     const mobileBtn = document.querySelector(".mobile-avatar-btn");
-    
-    // Only run if elements exist (mobile view)
-    if (
-        mobileBox &&
-        mobileBtn &&
-        !mobileBtn.contains(e.target) &&
-        !mobileBox.contains(e.target)
-    ) {
+    if (mobileBox && mobileBtn && !mobileBtn.contains(e.target) && !mobileBox.contains(e.target)) {
         mobileBox.classList.remove("show");
+    }
+    
+    // Bottom Profile Dropdown
+    const bottomBox = document.getElementById("bottomProfileBox");
+    const bottomBtnWrapper = document.querySelector(".bottom-profile-wrapper");
+    if (bottomBox && bottomBtnWrapper && !bottomBtnWrapper.contains(e.target)) {
+        bottomBox.classList.remove("show");
     }
 });
 

@@ -148,10 +148,10 @@
         <span>Home</span>
     </a>
 
-    <a href="{{ route('products') }}" class="mobile-nav-item {{ Request::is('products*') ? 'active' : '' }}">
-        <i class="fa-solid fa-layer-group"></i>
-        <span>Category</span>
-    </a>
+    <div class="mobile-nav-item" role="button" onclick="var bsOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar')); bsOffcanvas.show();">
+        <i class="fa-solid fa-bars"></i>
+        <span>Menu</span>
+    </div>
 
     <a href="{{ route('cart.index') }}" class="mobile-nav-item {{ Request::is('cart*') ? 'active' : '' }}">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -170,10 +170,23 @@
     </a>
 
     @auth
-        <a href="{{ route('order.show', Auth::id()) }}" class="mobile-nav-item {{ Request::is('order*') ? 'active' : '' }}">
-            <i class="fa-regular fa-user"></i>
-            <span>Profile</span>
-        </a>
+        <div class="mobile-nav-item bottom-profile-wrapper">
+             <button onclick="toggleBottomProfile()" type="button">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+             </button>
+             <div class="bottom-profile-dropdown" id="bottomProfileBox">
+                <a href="{{ route('order.show', Auth::id()) }}">
+                    <i class="fa-solid fa-box-open"></i> Orders
+                </a>
+                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+                    @csrf
+                    <button type="submit" class="text-danger">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </form>
+             </div>
+        </div>
     @endauth
     @guest
         <a href="{{ route('login') }}" class="mobile-nav-item {{ Request::is('login') ? 'active' : '' }}">
