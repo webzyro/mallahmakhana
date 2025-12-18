@@ -55,9 +55,9 @@
     </div>
 </header>
 
+
 {{-- Navbar --}}
-{{-- Navbar --}}
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2 d-none d-lg-block"
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2"
     id="navbar-container">
     <div class="container-fluid d-flex align-items-center justify-content-between" style="flex-wrap: nowrap;">
         <a class="navbar-brand" href="/" style="width: fit-content; overflow: hidden;">
@@ -141,57 +141,3 @@
     </div>
 </nav>
 
-<!-- Mobile Bottom Navigation -->
-<nav class="mobile-bottom-nav d-lg-none">
-    <a href="/" class="mobile-nav-item {{ Request::is('/') ? 'active' : '' }}">
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-    </a>
-
-    <div class="mobile-nav-item" role="button" onclick="var bsOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar')); bsOffcanvas.show();">
-        <i class="fa-solid fa-bars"></i>
-        <span>Menu</span>
-    </div>
-
-    <a href="{{ route('cart.index') }}" class="mobile-nav-item {{ Request::is('cart*') ? 'active' : '' }}">
-        <i class="fa-solid fa-cart-shopping"></i>
-        @if($cartCount > 0)
-            <span class="mobile-nav-badge">{{ $cartCount }}</span>
-        @endif
-        <span>Cart</span>
-    </a>
-
-    <a href="{{ route('wishlist') }}" class="mobile-nav-item {{ Request::is('wishlist*') ? 'active' : '' }}">
-        <i class="fa-regular fa-heart"></i>
-        @if($wishlistCount > 0)
-            <span class="mobile-nav-badge">{{ $wishlistCount }}</span>
-        @endif
-        <span>Wishlist</span>
-    </a>
-
-    @auth
-        <div class="mobile-nav-item bottom-profile-wrapper">
-             <button onclick="toggleBottomProfile()" type="button">
-                <i class="fa-regular fa-user"></i>
-                <span>Profile</span>
-             </button>
-             <div class="bottom-profile-dropdown" id="bottomProfileBox">
-                <a href="{{ route('order.show', Auth::id()) }}">
-                    <i class="fa-solid fa-box-open"></i> Orders
-                </a>
-                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
-                    @csrf
-                    <button type="submit" class="text-danger">
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout
-                    </button>
-                </form>
-             </div>
-        </div>
-    @endauth
-    @guest
-        <a href="{{ route('login') }}" class="mobile-nav-item {{ Request::is('login') ? 'active' : '' }}">
-            <i class="fa-regular fa-user"></i>
-            <span>Login</span>
-        </a>
-    @endguest
-</nav>

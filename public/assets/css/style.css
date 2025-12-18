@@ -3000,20 +3000,7 @@ form select {
         transform: translateY(0);
     }
 }
-/* Mobile Bottom Navigation */
-.mobile-bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    border-top: 1px solid var(--Border-4);
-}
+
 
 .mobile-nav-item {
     display: flex;
@@ -3062,12 +3049,6 @@ form select {
     border: 1px solid white;
 }
 
-/* Adjust padding for body to prevent content being hidden behind bottom nav */
-@media (max-width: 991px) {
-    body {
-        padding-bottom: 70px;
-    }
-}
 /* Bottom Profile Dropdown (Dropup) */
 .bottom-profile-wrapper {
     position: relative;
@@ -3123,7 +3104,8 @@ form select {
     color: var(--Primary);
 }
 
-.mobile-nav-item button { /* Reset button styles for profile toggle */
+.mobile-nav-item button {
+    /* Reset button styles for profile toggle */
     background: none;
     border: none;
     display: flex;
@@ -3136,6 +3118,12 @@ form select {
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translate(50%, 10px); }
-    to { opacity: 1; transform: translate(50%, 0); }
+    from {
+        opacity: 0;
+        transform: translate(50%, 10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(50%, 0);
+    }
 }
