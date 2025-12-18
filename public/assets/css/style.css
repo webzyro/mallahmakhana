@@ -145,12 +145,12 @@ body {
 }
 
 .user-btn {
-    background: transparent;
-    border: 1px solid var(--Border-11);
-    border-radius: 50px;
-    padding: 6px 14px;
-    display: flex;
-    align-items: center;
+    background: transparent !important;
+    border: 1px solid var(--Border-11) !important;
+    border-radius: 50px !important;
+    padding: 6px 14px !important;
+    display: flex !important;
+    align-items: center !important;
     gap: 8px;
     transition: all 0.3s ease;
     color: var(--Text-5);
@@ -158,19 +158,19 @@ body {
 }
 
 .user-btn:hover {
-    background: var(--Bg-3);
-    border-color: var(--Primary);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background: var(--Bg-3) !important;
+    border-color: var(--Primary) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
 }
 
 .user-btn i {
-    font-size: 1.1rem;
-    color: var(--Primary);
+    font-size: 1.1rem !important;
+    color: var(--Primary) !important;
 }
 
 .user-btn span {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
 }
 
 .dropdown-content {
