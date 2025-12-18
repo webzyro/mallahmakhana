@@ -77,7 +77,8 @@
                         href="{{ route('products') }}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark text-uppercase fw-bold fs-14" href="{{ route('contact') }}">Contact
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14"
+                        href="{{ route('contact.index') }}">Contact
                         Us</a>
                 </li>
                 <li class="nav-item">
@@ -164,7 +165,7 @@
                     <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('products') }}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('contact') }}">Contact
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('contact.index') }}">Contact
                         Us</a>
                 </li>
                 <li class="nav-item">

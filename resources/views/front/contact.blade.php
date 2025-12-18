@@ -43,10 +43,11 @@
                     <p>We’ll get back to you within 24 hours</p>
                 </div>
 
-                <form action="">
+                <form action="{{ route('contact.store') }}" method="POST">
+                    @csrf
                     <x-input-field label="Name" icon="fa-solid fa-user" id="name" type="text"
                         placeholder="Enter Your Name" />
-                    <x-input-field label="Phone Number" icon="fa-solid fa-phone" id="phone" type="text"
+                    <x-input-field label="Phone Number" icon="fa-solid fa-phone" id="phone" type="tel"
                         placeholder="Enter Your Number" />
                     <x-input-field label="Email" icon="fa-solid fa-envelope" id="email" type="email"
                         placeholder="Enter Your Email" />

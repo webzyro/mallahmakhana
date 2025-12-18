@@ -1,7 +1,9 @@
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{ asset('assets/images/makhana-banner.webp') }}" class="d-block w-100" alt="banner-one">
+            <a href="{{ route('products') }}" class="text-decoration-none w-100">
+                <img src="{{ asset('assets/images/makhana-banner.webp') }}" class="d-block w-100" alt="banner-one">
+            </a>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
