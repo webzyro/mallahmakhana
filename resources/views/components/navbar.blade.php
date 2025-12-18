@@ -57,55 +57,89 @@
 
 
 {{-- Navbar --}}
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2"
-    id="navbar-container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top px-md-4 py-2" id="navbar-container">
     <div class="container-fluid d-flex align-items-center justify-content-between" style="flex-wrap: nowrap;">
         <a class="navbar-brand" href="/" style="width: fit-content; overflow: hidden;">
             <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
         </a>
-        <div class="d-flex align-items-center gap-3">
+
+        <!-- Desktop Navigation Menu (Center) -->
+        <div class="d-none d-lg-block">
+            <ul class="navbar-nav flex-row gap-4">
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14" href="{{ route('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14"
+                        href="{{ route('products') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14" href="{{ route('contact') }}">Contact
+                        Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold fs-14"
+                        href="{{ route('blog.index') }}">Blogs</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 gap-md-3">
             @auth
                 <div class="user-dropdown">
                     <button class="user-btn">
-                        <span>{{ Auth::user()->name }}</span>
+                        <i class="fa-regular fa-user"></i>
+                        <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                     </button>
 
                     <div class="dropdown-content" id="dropdownBox">
-                        <a href="{{ route('order.show', Auth::id()) }}">View Orders</a>
+                        <a href="{{ route('order.show', Auth::id()) }}">
+                            <i class="fa-solid fa-box-open"></i>
+                            View Orders
+                        </a>
 
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('logout') }}" method="POST" class="m-0">
                             @csrf
-                            <button type="submit" class="logout-btn">Logout</button>
+                            <button type="submit" class="logout-btn">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout
+                            </button>
                         </form>
                     </div>
                 </div>
             @endauth
             @guest
-                <a href="{{ route('register') }}" class="text-decoration-none text-dark">
+                <a href="{{ route('register') }}" class="text-decoration-none text-dark action-item">
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <i class="fa-regular fa-user"></i>
-                        <small class="fw-bold">Sign Up</small>
+                        <small class="fw-bold d-none d-md-block">Sign Up</small>
                     </div>
                 </a>
             @endguest
-            <a href="{{ route('wishlist') }}" class="text-decoration-none text-dark">
+
+            <a href="{{ route('wishlist') }}" class="text-decoration-none text-dark action-item">
                 <div class="d-flex flex-column align-items-center justify-content-center" id="wishlist">
                     <i class="fa-regular fa-heart"></i>
-                    <small class="fw-bold">Wishlist</small>
+                    <small class="fw-bold d-none d-md-block">Wishlist</small>
                     <span>{{ $wishlistCount }}</span>
                 </div>
             </a>
-            <a href="{{ route('cart.index') }}" class="text-decoration-none text-dark">
+
+            <a href="{{ route('cart.index') }}" class="text-decoration-none text-dark action-item">
                 <div class="d-flex flex-column align-items-center justify-content-center" id="cart">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <small class="fw-bold">Bag</small>
+                    <small class="fw-bold d-none d-md-block">Bag</small>
                     <span>{{ $cartCount }}</span>
                 </div>
             </a>
-            <!-- Offcanvas Toggle for Desktop (if needed, usually desktop has links visible) -->
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+
+            <!-- Offcanvas Toggle for Mobile -->
+            <button class="navbar-toggler d-lg-none border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
@@ -115,7 +149,8 @@
                 <a class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel" href="/">
                     <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
                 </a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav mx-auto">
@@ -140,4 +175,3 @@
         </div>
     </div>
 </nav>
-
