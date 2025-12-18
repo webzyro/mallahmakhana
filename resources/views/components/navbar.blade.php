@@ -90,9 +90,8 @@
         <div class="d-flex align-items-center gap-2 gap-md-3">
             @auth
                 <div class="user-dropdown">
-                    <button class="user-btn">
-                        <i class="fa-regular fa-user"></i>
-                        <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                    <button class="user-btn" title="{{ Auth::user()->name }}">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                     </button>
 
                     <div class="dropdown-content" id="dropdownBox">
@@ -145,7 +144,8 @@
     </div> <!-- End Container Fluid -->
 
     <!-- Offcanvas for Mobile View -->
-    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
             <a class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel" href="/">
                 <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
