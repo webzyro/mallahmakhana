@@ -19,7 +19,7 @@ class Product extends Model
         'description',
         'is_featured',
         'is_active',
-        'category_id' 
+        'category_id'
     ];
 
     public function variants(): HasMany
@@ -35,5 +35,10 @@ class Product extends Model
     public function cartItems(): HasMany
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class);
     }
 }

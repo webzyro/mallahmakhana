@@ -24,7 +24,7 @@ class ProductForm
                             ->label("Product Name")
                             ->required()
                             ->maxLength(255),
-                        
+
                         FileUpload::make('image')
                             ->image()
                             ->disk('uploads')
@@ -32,7 +32,7 @@ class ProductForm
                             ->imageEditor()
                             ->preserveFilenames()
                             ->columnSpanFull(),
-                        
+
                         Select::make('category_id')
                             ->relationship('category', 'name')
                             ->required(),
@@ -46,12 +46,12 @@ class ProductForm
                         RichEditor::make('description')
                             ->columnSpanFull(),
                     ])->columns(2),
-                    
+
                 Section::make('SEO')
                     ->components([
                         TextInput::make('title')
-                        ->required()
-                        ->maxLength(255),
+                            ->required()
+                            ->maxLength(255),
 
                         TextInput::make('slug')
                             ->unique(ignoreRecord: true)
@@ -62,35 +62,51 @@ class ProductForm
                         TextInput::make('meta_keywords'),
                     ])
                     ->collapsible(),
-                
+                Section::make('Images')
+                    ->components([
+                        Repeater::make('images')
+                            ->relationship('images')
+                            ->schema([
+                                FileUpload::make('image')
+                                    ->image()
+                                    ->disk('uploads')
+                                    ->directory('products')
+                                    ->imageEditor()
+                                    ->preserveFilenames()
+                                    ->columnSpanFull(),
+                            ])
+                            ->columns(2)
+                            ->columnSpanFull()
+                    ]),
+
                 Section::make('Variants')
                     ->components([
                         Repeater::make('variants')
                             ->relationship('variants')
                             ->components([
                                 TextInput::make('flavor')
-                                ->required()
-                                ->maxLength(255),
+                                    ->required()
+                                    ->maxLength(255),
 
-                            TextInput::make('weight')
-                                ->required()
-                                ->maxLength(50),
+                                TextInput::make('weight')
+                                    ->required()
+                                    ->maxLength(50),
 
-                            TextInput::make('original_price')
-                                ->numeric()
-                                ->required(),
+                                TextInput::make('original_price')
+                                    ->numeric()
+                                    ->required(),
 
-                            TextInput::make('discounted_price')
-                                ->numeric()
-                                ->nullable(),
+                                TextInput::make('discounted_price')
+                                    ->numeric()
+                                    ->nullable(),
 
-                            TextInput::make('stock')
-                                ->numeric()
-                                ->default(0),
+                                TextInput::make('stock')
+                                    ->numeric()
+                                    ->default(0),
 
-                            Toggle::make('is_default')
-                                ->label('Default Variant')
-                                ->default(false),
+                                Toggle::make('is_default')
+                                    ->label('Default Variant')
+                                    ->default(false),
                             ])
                             ->columns(3)
                             ->columnSpanFull()
