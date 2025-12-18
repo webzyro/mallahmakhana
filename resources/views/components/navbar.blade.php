@@ -141,37 +141,36 @@
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        </div>
+        </div> <!-- End Action Buttons Group -->
+    </div> <!-- End Container Fluid -->
 
-        <!-- Add offcanvas -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <a class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel" href="/">
-                    <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
-                </a>
-                <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-uppercase fw-bold" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('about') }}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('products') }}">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('contact') }}">Contact
-                            Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('blog.index') }}">Blogs</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Offcanvas for Mobile View -->
+    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <a class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel" href="/">
+                <img src="https://www.webzyro.com/images/logo/webzyro-logo.png" alt="Logo" class="img-fluid w-75" />
+            </a>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('products') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('contact') }}">Contact
+                        Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark text-uppercase fw-bold" href="{{ route('blog.index') }}">Blogs</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
