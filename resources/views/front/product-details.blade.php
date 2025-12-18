@@ -7,7 +7,7 @@
                     <div class="product-details-img-wrapper">
                         <div class="product-details-img">
                             <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->name }}"
-                                class="img-fluid rounded-3 shadow-sm w-100" id="mainProductImage">
+                                class="img-fluid w-100" id="mainProductImage">
                         </div>
                     </div>
 
@@ -16,7 +16,7 @@
                         <div class="d-flex align-items-center gap-2 flex-wrap mt-4">
                             @foreach ($product->images as $image)
                                 <img src="{{ asset('uploads/' . $image->image) }}" alt="{{ $product->name }}"
-                                    class="img-fluid rounded-3 border-2 shadow-sm gallery-image"
+                                    class="img-fluid border-2 gallery-image"
                                     style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
                                     onclick="changeMainImage(this)">
                             @endforeach
