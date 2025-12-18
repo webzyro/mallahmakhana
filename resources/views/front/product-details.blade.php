@@ -16,7 +16,7 @@
                         <div class="d-flex align-items-center gap-2 flex-wrap mt-4">
                             @foreach ($product->images as $image)
                                 <img src="{{ asset('uploads/' . $image->image) }}" alt="{{ $product->name }}"
-                                    class="img-fluid border-2 gallery-image"
+                                    class="img-fluid border border-success gallery-image"
                                     style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
                                     onclick="changeMainImage(this)">
                             @endforeach
@@ -201,9 +201,9 @@
 
             // Active border
             document.querySelectorAll('.gallery-image').forEach((img) => {
-                img.classList.remove('border-2');
+                img.classList.remove('border-success');
             })
-            image.classList.add('border-2');
+            image.classList.add('border-success');
         }
     </script>
 </x-layout>
