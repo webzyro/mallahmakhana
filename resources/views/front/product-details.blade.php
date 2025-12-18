@@ -6,15 +6,30 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="product-details-img-wrapper">
                         <div class="product-details-img">
-                            <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded-3 shadow-sm w-100">
+                            <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->name }}"
+                                class="img-fluid rounded-3 shadow-sm w-100" id="mainProductImage">
                         </div>
                     </div>
+
+                    <!-- Product Images -->
+                    @if ($product->images->count())
+                        <div class="d-flex align-items-center gap-2 flex-wrap mt-4">
+                            @foreach ($product->images as $image)
+                                <img src="{{ asset('uploads/' . $image->image) }}" alt="{{ $product->name }}"
+                                    class="img-fluid rounded-3 border-2 shadow-sm gallery-image"
+                                    style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
+                                    onclick="changeMainImage(this)">
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Product Info Section -->
                 <div class="col-lg-7 col-md-6">
                     <div class="product-details-content ps-lg-4">
-                        <h2 class="product-title display-6 fw-bold mb-3" style="color: var(--Primary);">{{ $product->name }}</h2>
+                        <h2 class="product-title display-6 fw-bold mb-3" style="color: var(--Primary);">
+                            {{ $product->name }}
+                        </h2>
 
                         <!-- Rating -->
                         <div class="d-flex align-items-center gap-3 mb-3">
@@ -26,15 +41,21 @@
                                 <i class="fa-solid fa-star-half text-warning"></i>
                             </div>
                             <span class="text-muted fw-medium">(4.5 Reviews)</span>
-                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-1 rounded-pill">In Stock</span>
+                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-1 rounded-pill">In
+                                Stock</span>
                         </div>
 
                         <!-- Price -->
                         <div class="product-price d-flex align-items-end gap-3 mb-4">
-                            <h3 class="fw-bold mb-0" style="color: var(--Primary);">₹{{ $product->variants->first()->discounted_price ?? $product->variants->first()->original_price }}</h3>
+                            <h3 class="fw-bold mb-0" style="color: var(--Primary);">
+                                ₹{{ $product->variants->first()->discounted_price ?? $product->variants->first()->original_price }}
+                            </h3>
                             @if($product->variants->first()->discounted_price < $product->variants->first()->original_price)
-                                <h5 class="text-decoration-line-through text-muted mb-0">₹{{ $product->variants->first()->original_price }}</h5>
-                                <span class="badge bg-danger ms-2">{{ round((($product->variants->first()->original_price - $product->variants->first()->discounted_price) / $product->variants->first()->original_price) * 100) }}% OFF</span>
+                                <h5 class="text-decoration-line-through text-muted mb-0">
+                                    ₹{{ $product->variants->first()->original_price }}</h5>
+                                <span
+                                    class="badge bg-danger ms-2">{{ round((($product->variants->first()->original_price - $product->variants->first()->discounted_price) / $product->variants->first()->original_price) * 100) }}%
+                                    OFF</span>
                             @endif
                         </div>
 
@@ -46,7 +67,8 @@
                         <!-- Variant Selector -->
                         <div class="variant-selection mb-4">
                             <label for="variant-select" class="form-label fw-bold text-dark">Select Options</label>
-                            <select id="variant-select" class="form-select styled-select py-2" style="border-color: var(--Border-11); color: var(--Text);">
+                            <select id="variant-select" class="form-select styled-select py-2"
+                                style="border-color: var(--Border-11); color: var(--Text);">
                                 <option value="" disabled selected>Choose Flavor - Weight</option>
                                 @foreach ($product->variants as $variant)
                                     <option value="{{ $variant->id }}"
@@ -63,15 +85,16 @@
                         <div class="d-flex align-items-center gap-3 mb-5">
                             <form action="{{ route('cart.add', $product->id) }}" method="POST" class="flex-grow-1">
                                 @csrf
-                                <button type="submit" class="btn w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2" 
+                                <button type="submit"
+                                    class="btn w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2"
                                     style="background-color: var(--Primary); color: var(--White); border-radius: 12px; transition: all 0.3s;">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
                                 </button>
                             </form>
-                            
+
                             <form action="{{ route('wishlist.add', $product->id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn p-3 d-flex align-items-center justify-content-center" 
+                                <button type="submit" class="btn p-3 d-flex align-items-center justify-content-center"
                                     style="background-color: var(--Bg-3); color: var(--Primary); border-radius: 12px; border: 1px solid var(--Primary); width: 54px; height: 54px;">
                                     <i class="fa-regular fa-heart fa-lg"></i>
                                 </button>
@@ -82,8 +105,8 @@
                         <div class="service-features border-top pt-4">
                             <div class="row g-3">
                                 <div class="col-4 d-flex align-items-center gap-2">
-                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle" 
-                                         style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
+                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle"
+                                        style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
                                         <i class="fa-solid fa-truck-fast"></i>
                                     </div>
                                     <div class="text">
@@ -92,8 +115,8 @@
                                     </div>
                                 </div>
                                 <div class="col-4 d-flex align-items-center gap-2">
-                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle" 
-                                         style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
+                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle"
+                                        style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
                                         <i class="fa-solid fa-shield-halved"></i>
                                     </div>
                                     <div class="text">
@@ -102,8 +125,8 @@
                                     </div>
                                 </div>
                                 <div class="col-4 d-flex align-items-center gap-2">
-                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle" 
-                                         style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
+                                    <div class="icon-box d-flex align-items-center justify-content-center rounded-circle"
+                                        style="width: 45px; height: 45px; background-color: var(--Bg-8); color: var(--Primary);">
                                         <i class="fa-solid fa-award"></i>
                                     </div>
                                     <div class="text">
@@ -133,30 +156,30 @@
 
     <!-- Custom Script for dynamic price update -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const variantSelect = document.getElementById('variant-select');
             const priceElement = document.querySelector('.product-price h3');
             const oldPriceElement = document.querySelector('.product-price h5');
             const stockElement = document.getElementById('stock');
             const badgeElement = document.querySelector('.product-price .badge');
 
-            if(variantSelect) {
-                variantSelect.addEventListener('change', function() {
+            if (variantSelect) {
+                variantSelect.addEventListener('change', function () {
                     const selectedOption = this.options[this.selectedIndex];
                     const price = selectedOption.getAttribute('data-price');
                     const originalPrice = selectedOption.getAttribute('data-original-price'); // Need to ensure loop output this
                     const stock = selectedOption.getAttribute('data-stock');
 
                     priceElement.innerText = '₹' + price;
-                    
+
                     if (originalPrice && parseFloat(originalPrice) > parseFloat(price)) {
-                        if(oldPriceElement) oldPriceElement.innerText = '₹' + originalPrice;
-                        
+                        if (oldPriceElement) oldPriceElement.innerText = '₹' + originalPrice;
+
                         // Recalculate badge if needed or just hide it
                         // For simplicity in this static script, assuming basic update
-                        if(badgeElement) {
-                             const discount = Math.round(((originalPrice - price) / originalPrice) * 100);
-                             badgeElement.innerText = discount + '% OFF';
+                        if (badgeElement) {
+                            const discount = Math.round(((originalPrice - price) / originalPrice) * 100);
+                            badgeElement.innerText = discount + '% OFF';
                         }
                     }
 
@@ -170,5 +193,17 @@
                 });
             }
         });
+
+
+        function changeMainImage(image) {
+            const mainImage = document.getElementById('mainProductImage');
+            mainImage.src = image.src;
+
+            // Active border
+            document.querySelectorAll('.gallery-image').forEach((img) => {
+                img.classList.remove('border-2');
+            })
+            image.classList.add('border-2');
+        }
     </script>
 </x-layout>

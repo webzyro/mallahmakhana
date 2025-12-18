@@ -15,11 +15,13 @@ class ProductController extends Controller
     {
         $sort = $request->sort;
 
-        $products = Product::with(['variants' => function ($q) {
-            $q->where('is_default', true);
-        }]);
+        $products = Product::with([
+            'variants' => function ($q) {
+                $q->where('is_default', true);
+            }
+        ]);
 
-         // Apply Category Filter
+        // Apply Category Filter
         if ($request->category) {
             $products = $products->where('category_id', $request->category);
         }
@@ -87,14 +89,21 @@ class ProductController extends Controller
      */
     public function show(string $slug)
     {
-        $product = Product::with('variants')->where('slug', $slug)->firstOrFail();
+        $product = Product::with([
+            'variants',
+            'images' => fn($q) => $q->orderBy(
+                'sort_order'
+            )
+        ])
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         if (!$product) {
             return back()->with('error', 'Something went wrong!');
         }
 
         $variant = $product->variants->firstWhere('is_default', true)
-             ?? $product->variants->first();
+            ?? $product->variants->first();
 
         return view('front.product-details', ['product' => $product, 'variant' => $variant]);
     }
