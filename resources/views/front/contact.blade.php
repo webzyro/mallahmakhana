@@ -59,6 +59,9 @@
                                 <i class="fa-solid fa-comments"></i>
                             </div>
                             <textarea name="message" id="message" rows="3" placeholder="Enter Your Message"></textarea>
+                            @error('message')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
 
