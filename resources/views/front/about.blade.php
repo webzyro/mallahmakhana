@@ -301,7 +301,7 @@
                     </p>
                     <div class="cta-buttons">
                         <a href="{{ route('products') }}" class="btn btn-primary btn-lg me-3">Shop Now</a>
-                        <a href="{{ route('contact') }}" class="btn btn-outline-primary btn-lg">Contact Us</a>
+                        <a href="{{ route('contact.index') }}" class="btn btn-outline-primary btn-lg">Contact Us</a>
                     </div>
                 </div>
             </div>
