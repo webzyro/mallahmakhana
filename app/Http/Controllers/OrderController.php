@@ -105,15 +105,12 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        $order = Order::with('items.product')->where('id', $id)->where('user_id', Auth::id())->first();
-
-        if (!$order) {
-            return redirect()
-                ->back()
-                ->with('error', 'Order not found or you do not have permission to view it.');
-        }
+        $order = Order::with('items.product')
+            ->where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
 
         return view('front.order-details', ['order' => $order]);
     }
