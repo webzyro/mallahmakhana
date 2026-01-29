@@ -105,7 +105,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(string $id)
     {
         $order = Order::with('items.product')
             ->where('id', $id)
