@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Cache;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -12,7 +13,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::where('is_active', true)->orderBy('created_at', 'desc')->paginate(6);
+        $blogs = Cache::remember('blogs', 3600, function () {
+            return Blog::where('is_active', true)->orderBy('created_at', 'desc')->paginate(6);
+        });
         // dd($blogs);
         return view('front.blog', ['blogs' => $blogs]);
     }
