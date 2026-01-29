@@ -110,7 +110,9 @@ class OrderController extends Controller
         $order = Order::with('items.product')
             ->where('id', $id)
             ->where('user_id', Auth::id())
-            ->firstOrFail();
+            ->get();
+
+        // abort_if($order->user_id !== Auth::id(), 403);
 
         return view('front.order-details', ['order' => $order]);
     }
